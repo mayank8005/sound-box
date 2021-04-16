@@ -8,9 +8,12 @@ const SoundBox = (props) => {
   ]);
 
   useEffect(() => {
+    // Event handler to play required sound if correct key is pressed
     const keyDownEvenetHandler = (event) => {
       const keyPressed = event.key.toUpperCase();
-      if (keyPressed === props.soundKey) {
+      const soundKey = props.soundKey.toUpperCase()
+
+      if (keyPressed === soundKey) {
         setIsPlaying(true);
         audio.play().catch(() => {
             console.log('Audio not found !')

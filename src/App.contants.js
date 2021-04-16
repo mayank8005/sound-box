@@ -1,5 +1,8 @@
 export const BACKGROUND_IMAGE_URL = `${process.env.PUBLIC_URL}/audience.jpg`;
 
+// sound array will manage all the sound available in our application
+// Order of array will change order in which sound boxes are displayed in our application
+// If sound file does not exist we will console log FileNotFound error
 export const SOUNDS = [
     {soundName: 'Boom', soundKey: 'A', fileName: 'boom.wav'},
     {soundName: 'Hihat', soundKey: 'S', fileName: 'hihat.wav'},
