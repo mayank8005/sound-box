@@ -1,33 +1,37 @@
-import React, {useEffect} from 'react';
-import './sound-box.css';
+import React, { useState, useEffect, useMemo } from "react";
+import "./sound-box.css";
 
 const SoundBox = (props) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audio = useMemo(() => new Audio(`/sounds/${props.fileName}`), [
+    props.fileName,
+  ]);
 
-    useEffect(() => {
-        const audio = new Audio(`/sounds/${props.fileName}`);
+  useEffect(() => {
+    const keyDownEvenetHandler = (event) => {
+      const keyPressed = event.key.toUpperCase();
+      if (keyPressed === props.soundKey) {
+        setIsPlaying(true);
+        audio.play();
+      }
+    };
+    // adding event listener
+    document.addEventListener("keydown", keyDownEvenetHandler);
+    audio.addEventListener("ended", () => setIsPlaying(false));
 
-        const keyDownEvenetHandler = (event) => {
-            const keyPressed = event.key.toUpperCase();
-            if(keyPressed === props.soundKey) {
-                audio.play();
-            }
-        }
-        // adding event listener
-        document.addEventListener("keydown", keyDownEvenetHandler);
+    return () => document.removeEventListener("keydown", keyDownEvenetHandler);
+  }, [props.fileName, props.soundKey, audio, setIsPlaying]);
 
-        return () => document.removeEventListener("keydown", keyDownEvenetHandler);
-    }, [props.fileName, props.soundKey]);
-
-    return (
-        <div className="sound-box">
-            <div className="sound-key">
-                {props.soundKey}
-            </div>
-            <div className="sound-name">
-                {props.soundName}
-            </div>
-        </div>
-    );
-}
+  return (
+    <div
+      className={`sound-box ${
+        isPlaying ? "sound-box-playing-border" : "sound-box-normal-border"
+      }`}
+    >
+      <div className="sound-key">{props.soundKey}</div>
+      <div className="sound-name">{props.soundName}</div>
+    </div>
+  );
+};
 
 export default SoundBox;

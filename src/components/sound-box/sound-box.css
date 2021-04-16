@@ -1,31 +1,38 @@
 .sound-box {
-    position: relative;
-    background-color: rgba(10, 122, 236, 0.4);
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    margin: 5px;
-    border: gray 3px solid;
+  position: relative;
+  background-color: rgba(10, 122, 236, 0.4);
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+}
+
+.sound-box-normal-border {
+  border: gray 3px solid;
+}
+
+.sound-box-playing-border {
+  border: yellow 3px solid;
 }
 
 .sound-key {
-    display: inline-block;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-size: large;
+  display: inline-block;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
 }
 
 .sound-name {
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    opacity: 1;
-    background-color: yellow;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+  background-color: yellow;
 }
