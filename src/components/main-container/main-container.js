@@ -12,12 +12,17 @@ const MainContainer = () => {
     <div
       className="main-container"
       style={{
-        "background-image": `url(${BACKGROUND_IMAGE_URL})`,
+        backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
       }}
     >
       <div className="sound-buttons-panel">
         {SOUNDS.map((sound) => (
-          <SoundBox soundName={sound.soundName} soundKey={sound.soundKey} />
+          <SoundBox
+            key={sound.soundKey}
+            soundName={sound.soundName}
+            soundKey={sound.soundKey}
+            fileName={sound.fileName}
+          />
         ))}
       </div>
     </div>
