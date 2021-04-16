@@ -12,7 +12,9 @@ const SoundBox = (props) => {
       const keyPressed = event.key.toUpperCase();
       if (keyPressed === props.soundKey) {
         setIsPlaying(true);
-        audio.play();
+        audio.play().catch(() => {
+            console.log('Audio not found !')
+        });
       }
     };
     // adding event listener
