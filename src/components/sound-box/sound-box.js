@@ -11,12 +11,12 @@ const SoundBox = (props) => {
     // Event handler to play required sound if correct key is pressed
     const keyDownEvenetHandler = (event) => {
       const keyPressed = event.key.toUpperCase();
-      const soundKey = props.soundKey.toUpperCase()
+      const soundKey = props.soundKey.toUpperCase();
 
       if (keyPressed === soundKey) {
         setIsPlaying(true);
         audio.play().catch(() => {
-            console.log('Audio not found !')
+          console.log("Audio not found !");
         });
       }
     };
@@ -28,11 +28,7 @@ const SoundBox = (props) => {
   }, [props.fileName, props.soundKey, audio, setIsPlaying]);
 
   return (
-    <div
-      className={`sound-box ${
-        isPlaying ? "sound-box-playing-border" : "sound-box-normal-border"
-      }`}
-    >
+    <div className={`sound-box ${isPlaying ? "playing" : ""}`}>
       <div className="sound-key">{props.soundKey}</div>
       <div className="sound-name">{props.soundName}</div>
     </div>
